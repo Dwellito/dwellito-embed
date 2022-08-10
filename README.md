@@ -12,7 +12,7 @@ This snippet is used to load the dwellito widget into a responsive iframe within
 
 ## Setting Up The Embed
 
-1. Add the following HTML tag to the header section of your page
+1. Add the following HTML script tag to the header section of your page
 
 ```sh
  <script src="https://cdn.jsdelivr.net/gh/Dwellito/dwellito-embed/embed.js" async></script>
