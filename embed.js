@@ -30,7 +30,7 @@ const add_dwellito_style = () => {
   
   .darken { 
     background: rgba(0, 0, 0, 0.5); 
-    z-index: 100000000;
+    z-index: 2147483647;
     position: absolute;
     top: 0;
     left: 0;
