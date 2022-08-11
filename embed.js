@@ -51,7 +51,7 @@ const add_dwellito_style = () => {
   }
   
   .close:before, .close:after {
-    position: absolute;
+    position: fixed;
     left: 15px;
     content: ' ';
     height: 20px;
@@ -73,7 +73,7 @@ const add_dwellito_style = () => {
   }
   
   #dwelitto-page {
-    position: absolute;
+    position: fixed;
     top: 0,
     left: 0,
     min-height: 100%;
@@ -96,8 +96,6 @@ document.getElementById("dwellito").onclick = function (e) {
   document.getElementById("dwellito-iframe").src =
     "https://dwellito-widget.herokuapp.com/";
   document.getElementById("dwellito-page").className = "darken";
-  document.getElementById("dwellito-page").style.top = window.scrollY;
-  document.getElementById("dwellito-page").style.left = window.scrollX;
   document.getElementById("dwellito-page").onclick = function () {
     if (isClosed) {
       return;
