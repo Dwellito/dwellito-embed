@@ -3,8 +3,11 @@
 <a name="readme-top"></a>
 
 <!-- PROJECT LOGO -->
-<br />
-<!-- ABOUT THE PROJECT -->
+ <a href="https://dwellito.com">
+    <img src="https://avatars.githubusercontent.com/u/83094440?s=200&v=4" alt="Logo" width="80" height="80">
+  </a>
+  
+  <!-- ABOUT THE PROJECT -->
 
 ## About
 
@@ -15,7 +18,7 @@ This snippet is used to load the dwellito widget into a responsive iframe within
 1. Add the following HTML script tag to the header section of your page
 
 ```
- <script src="https://cdn.jsdelivr.net/gh/Dwellito/dwellito-embed/embed.js" async></script>
+ <script src="https://cdn.jsdelivr.net/gh/Dwellito/dwellito-embed@V1.0.0/embed.js" async></script>
 ```
 
 2. To add the open widget behavior to the desired element, simply add the id dwellito to the element. The example below is used to add the open widget behavior to a button.
