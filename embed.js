@@ -32,8 +32,6 @@ const add_dwellito_style = () => {
     background: rgba(0, 0, 0, 0.5); 
     z-index: 2147483647;
     position: absolute;
-    top: 0;
-    left: 0;
     min-height: 100%;
     min-width: 100%;
   }
@@ -76,8 +74,6 @@ const add_dwellito_style = () => {
   
   #dwelitto-page {
     position: absolute;
-    top: 0;
-    left: 0;
     min-height: 100%;
     min-width: 100%;
     height: 100vh;
@@ -92,13 +88,14 @@ add_dwellito_style();
 
 document.getElementById("dwellito").onclick = function (e) {
   e.preventDefault();
-  var isInit = true; // indicates if the popup already been initialized.
   var isClosed = false; // indicates the state of the popup
   document.getElementById("dwellito-popup").style.display = "block";
   document.getElementById("dwellito-close").style.display = "block";
   document.getElementById("dwellito-iframe").src =
     "https://dwellito-widget.herokuapp.com/";
   document.getElementById("dwellito-page").className = "darken";
+  document.getElementById("dwellito-page").style.top = window.scrollY;
+  document.getElementById("dwellito-page").style.left = window.scrollX;
   document.getElementById("dwellito-page").onclick = function () {
     if (isClosed) {
       return;
