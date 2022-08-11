@@ -41,11 +41,11 @@ const add_dwellito_style = () => {
   .close {
     display: none; 
     position: fixed;
-    right: 10px;
-    top: 15px;
-    width: 30px;
-    height: 30px;
-    opacity: 0.3;
+    right: 15px;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+    opacity: 0.15;
   }
   
   .close:hover {
@@ -54,7 +54,7 @@ const add_dwellito_style = () => {
   
   .close:before, .close:after {
     position: fixed;
-    top: 20px;
+    top: 25px;
     right: 25px;
     content: ' ';
     height: 20px;
@@ -98,6 +98,9 @@ document.getElementById("dwellito").onclick = function (e) {
   document.getElementById("dwellito-close").style.display = "block";
   document.getElementById("dwellito-iframe").src =
     "https://dwellito-widget.herokuapp.com/";
+  if (window.innerWidth < 600) {
+    document.getElementById("dwellito-iframe").style.height = "100vh";
+  }
   document.getElementById("dwellito-page").className = "darken";
   document.getElementById("dwellito-page").onclick = function () {
     if (isClosed) {
