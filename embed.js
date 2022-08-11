@@ -111,6 +111,15 @@ document.getElementById("dwellito").onclick = function (e) {
     document.getElementById("dwellito-page").className = "";
     isClosed = true;
   };
+  document.getElementById("dwellito-page").ontouchstart = function () {
+    if (isClosed) {
+      return;
+    } //if the popup is closed, do nothing.
+    document.getElementById("dwellito-popup").style.display = "none";
+    document.getElementById("dwellito-close").style.display = "none";
+    document.getElementById("dwellito-page").className = "";
+    isClosed = true;
+  };
 
   return false;
 };
