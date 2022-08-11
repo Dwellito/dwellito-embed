@@ -32,6 +32,8 @@ const add_dwellito_style = () => {
     background: rgba(0, 0, 0, 0.5); 
     z-index: 2147483647;
     position: fixed;
+    top: 0;
+    left: 0;
     min-height: 100%;
     min-width: 100%;
   }
@@ -39,10 +41,10 @@ const add_dwellito_style = () => {
   .close {
     display: none; 
     position: fixed;
-    right: 24px;
-    top: 25px;
-    width: 20px;
-    height: 20px;
+    right: 10px;
+    top: 15px;
+    width: 30px;
+    height: 30px;
     opacity: 0.3;
   }
   
@@ -52,7 +54,8 @@ const add_dwellito_style = () => {
   
   .close:before, .close:after {
     position: fixed;
-    left: 15px;
+    top: 20px;
+    right: 25px;
     content: ' ';
     height: 20px;
     width: 2px;
