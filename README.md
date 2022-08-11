@@ -3,9 +3,12 @@
 <a name="readme-top"></a>
 
 <!-- PROJECT LOGO -->
+<div align="center">
  <a href="https://dwellito.com">
     <img src="https://avatars.githubusercontent.com/u/83094440?s=200&v=4" alt="Logo" width="80" height="80">
   </a>
+  <h3 align="center">Dwellito Embed</h3>
+</div>
   
   <!-- ABOUT THE PROJECT -->
 
