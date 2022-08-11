@@ -22,7 +22,7 @@ const add_dwellito_style = () => {
     width: 100%;
     background-color: transparent;
     z-index: 10;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -31,14 +31,14 @@ const add_dwellito_style = () => {
   .darken { 
     background: rgba(0, 0, 0, 0.5); 
     z-index: 2147483647;
-    position: absolute;
+    position: fixed;
     min-height: 100%;
     min-width: 100%;
   }
   
   .close {
     display: none; 
-    position: absolute;
+    position: fixed;
     right: 24px;
     top: 25px;
     width: 20px;
