@@ -97,7 +97,7 @@ document.getElementById("dwellito").onclick = function (e) {
   document.getElementById("dwellito-popup").style.display = "block";
   document.getElementById("dwellito-close").style.display = "block";
   document.getElementById("dwellito-iframe").src =
-    "https://dwellito-widget.herokuapp.com/";
+    "https://dwellito-info.herokuapp.com/";
   if (window.innerWidth < 600) {
     document.getElementById("dwellito-iframe").style.height = "100vh";
   }
