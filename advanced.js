@@ -45,16 +45,16 @@ const add_dwellito_style = () => {
     top: 20px;
     width: 50px;
     height: 50px;
-    opacity: 0.15;
+    opacity: 1;
   }
   
   .close:hover {
-    opacity: 1;
+    opacity: 0.5;
   }
   
   .close:before, .close:after {
     position: fixed;
-    top: 25px;
+    top: 18px;
     right: 25px;
     content: ' ';
     height: 20px;
@@ -72,7 +72,8 @@ const add_dwellito_style = () => {
     border: 0; 
     height: calc(100vh - 50px);
     width: 100%;
-    max-width: 500px;
+    max-width: 574px;
+    border-radius: 4px;
   }
   
   #dwelitto-page {
