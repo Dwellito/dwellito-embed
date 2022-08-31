@@ -1,5 +1,3 @@
-// snippet to include on 3rd-party websites that targets an id and opens the dwellito modal on Click
-
 let add_dwellito = () => {
   const template = document.createElement("div");
   template.innerHTML = `
@@ -18,7 +16,7 @@ const add_dwellito_style = () => {
   style.innerHTML = `#dwellito-popup { 
     display: none; 
     min-height: 500px;
-    max-width: 500px;
+    max-width: 550px;
     width: 100%;
     background-color: transparent;
     z-index: 10;
@@ -45,16 +43,16 @@ const add_dwellito_style = () => {
     top: 20px;
     width: 50px;
     height: 50px;
-    opacity: 0.15;
+    opacity: 1;
   }
   
   .close:hover {
-    opacity: 1;
+    opacity: 0.5;
   }
   
   .close:before, .close:after {
     position: fixed;
-    top: 25px;
+    top: 18px;
     right: 25px;
     content: ' ';
     height: 20px;
@@ -72,7 +70,8 @@ const add_dwellito_style = () => {
     border: 0; 
     height: calc(100vh - 50px);
     width: 100%;
-    max-width: 500px;
+    max-width: 550px;
+    border-radius: 4px;
   }
   
   #dwelitto-page {
