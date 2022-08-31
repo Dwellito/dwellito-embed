@@ -93,11 +93,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
   document.getElementById("dwellito").onclick = function (e) {
     e.preventDefault();
     var isClosed = false; // indicates the state of the popup
-    document.getElementById("dwellito-iframe").src =
-      "https://dwellito-info.herokuapp.com/";
     document.getElementById("dwellito-popup").style.display = "block";
     document.getElementById("dwellito-close").style.display = "block";
-
+    document.getElementById("dwellito-iframe").src =
+      "https://dwellito-info.herokuapp.com/";
     if (window.innerWidth < 600) {
       document.getElementById("dwellito-iframe").style.height = "100vh";
     }
