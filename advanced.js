@@ -1,4 +1,7 @@
-let add_dwellito = () => {
+const queryString = window.location.search;
+console.log(queryString);
+
+const add_dwellito = () => {
   const template = document.createElement("div");
   template.innerHTML = `
   <div id="dwellito-page">
