@@ -1,7 +1,7 @@
 // snippet to include on 3rd-party websites that targets an id and opens the advanced dwellito modal on Click
 
 let queryString = "";
-if (typeof dwellitoEmbed !== "undefined") {
+if (typeof dwellitoEmbed === "object") {
   queryString =
     "?" +
     Object.keys(dwellitoEmbed)
