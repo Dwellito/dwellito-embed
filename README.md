@@ -30,4 +30,15 @@ This snippet is used to load the dwellito widget into a responsive iframe within
  <button id="dwellito">Need Financing?</button>
 ```
 
+3. (Optional) To customize the behavior of the widget, add a script containing a dwellitoEmbed object above the embed script. The initialValue parameter sets the initial desired loan value. More customizations to come.
+
+```
+ <script>
+    var dwellitoEmbed = {
+      intialValue: 240000
+    }
+ </script>
+ <script src="https://cdn.jsdelivr.net/gh/Dwellito/dwellito-embed@v1.0.1/embed.js" async></script>
+```
+
 Note: The above is just an example. You should apply id="dwellito" to the element on your page that you want to trigger the widget.
