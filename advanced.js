@@ -1,8 +1,8 @@
-// snippet to include on 3rd-party websites that targets an id and opens the advanced dwellito modal on Click
+let dwellitoSrc = "https://dwellito-info.herokuapp.com/";
+let dwellitoQS = "";
 
-let queryString = "";
 if (typeof dwellitoEmbed === "object") {
-  queryString =
+  dwellitoQS =
     "?" +
     Object.keys(dwellitoEmbed)
       .map((key) => {
@@ -12,6 +12,8 @@ if (typeof dwellitoEmbed === "object") {
       })
       .join("&");
 }
+
+dwellitoSrc += dwellitoQS;
 
 const add_dwellito = () => {
   const template = document.createElement("div");
@@ -110,8 +112,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var isClosed = false; // indicates the state of the popup
     document.getElementById("dwellito-popup").style.display = "block";
     document.getElementById("dwellito-close").style.display = "block";
-    document.getElementById("dwellito-iframe").src =
-      "https://dwellito-info.herokuapp.com/" + queryString;
+    document.getElementById("dwellito-iframe").src = dwellitoSrc;
     if (window.innerWidth < 600) {
       document.getElementById("dwellito-iframe").style.height = "100vh";
     }
