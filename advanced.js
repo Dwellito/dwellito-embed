@@ -1,5 +1,15 @@
-const queryString = window.location.search;
-console.log(queryString);
+// snippet to include on 3rd-party websites that targets an id and opens the advanced dwellito modal on Click
+
+let queryString = "";
+if (typeof dwellitoEmbed !== "undefined") {
+  queryString = Object.keys(dwellitoEmbed)
+    .map((key) => {
+      return (
+        encodeURIComponent(key) + "=" + encodeURIComponent(dwellitoEmbed[key])
+      );
+    })
+    .join("&");
+}
 
 const add_dwellito = () => {
   const template = document.createElement("div");
@@ -99,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     document.getElementById("dwellito-popup").style.display = "block";
     document.getElementById("dwellito-close").style.display = "block";
     document.getElementById("dwellito-iframe").src =
-      "https://dwellito-info.herokuapp.com/";
+      "https://dwellito-info.herokuapp.com?" + queryString;
     if (window.innerWidth < 600) {
       document.getElementById("dwellito-iframe").style.height = "100vh";
     }
