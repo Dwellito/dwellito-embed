@@ -104,9 +104,7 @@ const add_dwellito_style = () => {
   document.head.appendChild(style);
 };
 
-add_dwellito();
-add_dwellito_style();
-document.addEventListener("DOMContentLoaded", function (event) {
+const handleDwellitoIframe = () => {
   document.getElementById("dwellito").onclick = function (e) {
     e.preventDefault();
     var isClosed = false; // indicates the state of the popup
@@ -140,4 +138,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     return false;
   };
-});
+};
+
+if (document.readyState !== "loading") {
+  add_dwellito();
+  add_dwellito_style();
+  handleDwellitoIframe();
+} else {
+  document.addEventListener("DOMContentLoaded", function () {
+    add_dwellito();
+    add_dwellito_style();
+    handleDwellitoIframe();
+  });
+}
