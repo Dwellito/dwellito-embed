@@ -18,19 +18,9 @@ dwellitoSrc += dwellitoQS;
 const add_dwellito = () => {
   const template = document.createElement("div");
   template.innerHTML = `
-  <div id="dwellito-page">
-    <div id="dwellito-popup"> 
-    <iframe id="dwellito-iframe" frameborder=0> </iframe>
-      <a href="#" id="dwellito-close" class="close"/>
-    </div>
-  </div>`;
-
-  document.body.appendChild(template);
-};
-
-const add_dwellito_style = () => {
-  var style = document.createElement("style");
-  style.innerHTML = `#dwellito-popup { 
+  <div id="dwellito-holder">
+  <style scoped>
+  #dwellito-popup { 
     display: none; 
     min-height: 500px;
     max-width: 550px;
@@ -99,13 +89,20 @@ const add_dwellito_style = () => {
     min-width: 100%;
     height: 100vh;
     width: 100vw;
-  }
-  `;
-  document.head.appendChild(style);
+  };
+  </style>
+  <div id="dwellito-page">
+    <div id="dwellito-popup"> 
+    <iframe id="dwellito-iframe" frameborder=0> </iframe>
+      <a href="#" id="dwellito-close" class="close"/>
+    </div>
+  </div>
+  </div>`;
+
+  document.body.appendChild(template);
 };
 
 add_dwellito();
-add_dwellito_style();
 
 const handle_dwellito_open = () => {
   document.getElementById("dwellito").onclick = function (e) {
@@ -113,8 +110,7 @@ const handle_dwellito_open = () => {
     var isClosed = false; // indicates the state of the popup
     document.getElementById("dwellito-popup").style.display = "block";
     document.getElementById("dwellito-close").style.display = "block";
-    document.getElementById("dwellito-iframe").src =
-      "https://dwellito-info.herokuapp.com/";
+    document.getElementById("dwellito-iframe").src = dwellitoSrc;
     if (window.innerWidth < 600) {
       document.getElementById("dwellito-iframe").style.height = "100vh";
     }
