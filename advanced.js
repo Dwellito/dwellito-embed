@@ -1,19 +1,19 @@
-let dwellitoSrc = "https://dwellito-info.herokuapp.com/";
-let dwellitoQS = "";
+// let dwellitoSrc = "https://dwellito-info.herokuapp.com/";
+// let dwellitoQS = "";
 
-if (typeof dwellitoEmbed === "object") {
-  dwellitoQS =
-    "?" +
-    Object.keys(dwellitoEmbed)
-      .map((key) => {
-        return (
-          encodeURIComponent(key) + "=" + encodeURIComponent(dwellitoEmbed[key])
-        );
-      })
-      .join("&");
-}
+// if (typeof dwellitoEmbed === "object") {
+//   dwellitoQS =
+//     "?" +
+//     Object.keys(dwellitoEmbed)
+//       .map((key) => {
+//         return (
+//           encodeURIComponent(key) + "=" + encodeURIComponent(dwellitoEmbed[key])
+//         );
+//       })
+//       .join("&");
+// }
 
-dwellitoSrc += dwellitoQS;
+// dwellitoSrc += dwellitoQS;
 
 const add_dwellito = () => {
   const template = document.createElement("div");
@@ -124,7 +124,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
       document.getElementById("dwellito-popup").style.display = "none";
       document.getElementById("dwellito-close").style.display = "none";
       document.getElementById("dwellito-page").className = "";
-      document.getElementById("dwellito-iframe").src = "";
+      document.getElementById("dwellito-iframe").src =
+        "https://dwellito-info.herokuapp.com/";
       isClosed = true;
     };
     document.getElementById("dwellito-page").ontouchstart = function () {
