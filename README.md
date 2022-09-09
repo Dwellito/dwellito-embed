@@ -35,7 +35,8 @@ This snippet is used to load the dwellito widget into a responsive iframe within
 ```
  <script>
     var dwellitoEmbed = {
-      intialValue: 240000
+      intialValue: 240000,
+      clickElementIds: ["dwellitoClickElement1", "dwellitoClickElement2"]
     }
  </script>
  <script src="https://cdn.jsdelivr.net/gh/Dwellito/dwellito-embed@v1.0.1/embed.js" async></script>
