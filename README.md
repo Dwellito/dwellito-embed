@@ -30,7 +30,7 @@ This snippet is used to load the dwellito widget into a responsive iframe within
  <button id="dwellito">Need Financing?</button>
 ```
 
-3. (Optional) To customize the behavior of the widget, add a script containing a dwellitoEmbed object above the embed script. The initialValue parameter sets the initial desired loan value. More customizations to come.
+3. (Optional) To customize the behavior of the widget, add a script containing a dwellitoEmbed object above the embed script. The initialValue parameter sets the initial desired loan value. The clickElementIds overrides the default behavior of setting the widget to open on a single element with id "dwellito" and allows providing an array of ids that correspond to elements on your page that you want to open the widget.
 
 ```
  <script>
