@@ -18,25 +18,14 @@ dwellitoSrc += dwellitoQS;
 const add_dwellito = () => {
   const template = document.createElement("div");
   template.innerHTML = `
-  <div id="dwellito-page">
-    <div id="dwellito-popup"> 
-    <iframe id="dwellito-iframe" frameborder=0> </iframe>
-      <a href="#" id="dwellito-close" class="close"/>
-    </div>
-  </div>`;
-
-  document.body.appendChild(template);
-};
-
-const add_dwellito_style = () => {
-  var style = document.createElement("style");
-  style.innerHTML = `#dwellito-popup { 
+  <div id="dwellito-holder">
+  <style scoped>
+  #dwellito-popup { 
     display: none; 
     min-height: 500px;
     max-width: 550px;
     width: 100%;
     background-color: transparent;
-    z-index: 10;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -91,7 +80,7 @@ const add_dwellito_style = () => {
     border-radius: 4px;
   }
   
-  #dwelitto-page {
+  #dwellito-page {
     position: fixed;
     top: 0,
     left: 0,
@@ -99,13 +88,20 @@ const add_dwellito_style = () => {
     min-width: 100%;
     height: 100vh;
     width: 100vw;
-  }
-  `;
-  document.head.appendChild(style);
+  };
+  </style>
+  <div id="dwellito-page">
+    <div id="dwellito-popup"> 
+    <iframe id="dwellito-iframe" frameborder=0> </iframe>
+      <a href="#" id="dwellito-close" class="close"/>
+    </div>
+  </div>
+  </div>`;
+
+  document.body.appendChild(template);
 };
 
 add_dwellito();
-add_dwellito_style();
 
 const handle_dwellito_open = () => {
   document.getElementById("dwellito").onclick = function (e) {
