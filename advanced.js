@@ -109,8 +109,7 @@ const handle_dwellito_open = () => {
     var isClosed = false; // indicates the state of the popup
     document.getElementById("dwellito-popup").style.display = "block";
     document.getElementById("dwellito-close").style.display = "block";
-    document.getElementById("dwellito-iframe").src =
-      "https://dwellito-info.herokuapp.com/";
+    document.getElementById("dwellito-iframe").src = dwellitoSrc;
     if (window.innerWidth < 600) {
       document.getElementById("dwellito-iframe").style.height = "100vh";
     }
