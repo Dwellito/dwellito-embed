@@ -26,7 +26,6 @@ const add_dwellito = () => {
   <style scoped>
   #dwellito-popup { 
     display: none; 
-    min-height: 500px;
     max-width: 550px;
     width: 100%;
     background-color: transparent;
@@ -46,39 +45,8 @@ const add_dwellito = () => {
     min-width: 100%;
   }
   
-  .close {
-    display: none; 
-    position: fixed;
-    right: 15px;
-    top: 20px;
-    width: 50px;
-    height: 50px;
-    opacity: 1;
-  }
-  
-  .close:hover {
-    opacity: 0.5;
-  }
-  
-  .close:before, .close:after {
-    position: fixed;
-    top: 18px;
-    right: 25px;
-    content: ' ';
-    height: 20px;
-    width: 2px;
-    background-color: #646A96;
-  }
-  .close:before {
-    transform: rotate(45deg);
-  }
-  .close:after {
-    transform: rotate(-45deg);
-  }
-  
   #dwellito-iframe { 
     border: 0; 
-    height: calc(100vh - 50px);
     width: 100%;
     max-width: 550px;
     border-radius: 4px;
@@ -108,32 +76,59 @@ const add_dwellito = () => {
 add_dwellito();
 
 const handle_dwellito_click = (e) => {
+  console.log(window.innerWidth);
   e.preventDefault();
   var isClosed = false; // indicates the state of the popup
-  document.getElementById("dwellito-popup").style.display = "block";
-  document.getElementById("dwellito-close").style.display = "block";
-  document.getElementById("dwellito-iframe").src = dwellitoSrc;
-  if (window.innerWidth < 600) {
-    document.getElementById("dwellito-iframe").style.height = "100vh";
-  }
-  document.getElementById("dwellito-page").className = "darken";
-  document.getElementById("dwellito-page").onclick = function () {
+  const iframe = document.getElementById("dwellito-iframe");
+  const page = document.getElementById("dwellito-page");
+  const popup = document.getElementById("dwellito-popup");
+  popup.style.display = "block";
+  iframe.src = dwellitoSrc;
+  var eventMethod = window.addEventListener
+    ? "addEventListener"
+    : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  eventer(
+    messageEvent,
+    function (e) {
+      var key = e.message ? "message" : "data";
+      var data = e[key];
+      if (data === "closeWindow") {
+        popup.style.display = "none";
+        page.className = "";
+        iframe.src = "";
+        isClosed = true;
+      } else {
+        const maxHeight = Math.min(window.innerHeight, data);
+        if (maxHeight < data || window.innerWidth < 600) {
+          popup.style.top = "0px !important";
+          popup.style.transform = "translate(0%, 0%) !important";
+          iframe.style.height = `${window.innerHeight}px`;
+        } else {
+          iframe.style.height = `${maxHeight}px`;
+        }
+      }
+    },
+    false
+  );
+
+  page.className = "darken";
+  page.onclick = function () {
     if (isClosed) {
       return;
     } //if the popup is closed, do nothing.
-    document.getElementById("dwellito-popup").style.display = "none";
-    document.getElementById("dwellito-close").style.display = "none";
-    document.getElementById("dwellito-page").className = "";
-    document.getElementById("dwellito-iframe").src = "";
+    popup.style.display = "none";
+    page.className = "";
+    iframe.src = "";
     isClosed = true;
   };
-  document.getElementById("dwellito-page").ontouchstart = function () {
+  page.ontouchstart = function () {
     if (isClosed) {
       return;
     } //if the popup is closed, do nothing.
-    document.getElementById("dwellito-popup").style.display = "none";
-    document.getElementById("dwellito-close").style.display = "none";
-    document.getElementById("dwellito-page").className = "";
+    popup.style.display = "none";
+    page.className = "";
     isClosed = true;
   };
 
