@@ -1,27 +1,30 @@
-let dwellitoSrc = "https://dwellito-info.herokuapp.com/";
-let dwellitoQS = "";
-let dwellitoTgt = ["dwellito"];
+function setup_dwellito() {
+  let dwellitoSrc = "https://dwellito-info.herokuapp.com/";
+  let dwellitoQS = "";
+  let dwellitoTgt = ["dwellito"];
 
-if (typeof dwellitoEmbed === "object") {
-  if (typeof dwellitoEmbed.clickElementIds !== "undefined") {
-    dwellitoTgt = dwellitoEmbed.clickElementIds;
+  if (typeof dwellitoEmbed === "object") {
+    if (typeof dwellitoEmbed.clickElementIds !== "undefined") {
+      dwellitoTgt = dwellitoEmbed.clickElementIds;
+    }
+    dwellitoQS =
+      "?" +
+      Object.keys(dwellitoEmbed)
+        .map((key) => {
+          return (
+            encodeURIComponent(key) +
+            "=" +
+            encodeURIComponent(dwellitoEmbed[key])
+          );
+        })
+        .join("&");
   }
-  dwellitoQS =
-    "?" +
-    Object.keys(dwellitoEmbed)
-      .map((key) => {
-        return (
-          encodeURIComponent(key) + "=" + encodeURIComponent(dwellitoEmbed[key])
-        );
-      })
-      .join("&");
-}
 
-dwellitoSrc += dwellitoQS;
+  dwellitoSrc += dwellitoQS;
 
-const add_dwellito = () => {
-  const template = document.createElement("div");
-  template.innerHTML = `
+  const add_dwellito = () => {
+    const template = document.createElement("div");
+    template.innerHTML = `
   <div id="dwellito-holder">
   <style scoped>
   #dwellito-popup { 
@@ -70,87 +73,90 @@ const add_dwellito = () => {
   </div>
   </div>`;
 
-  document.body.appendChild(template);
-};
+    document.body.appendChild(template);
+  };
 
-add_dwellito();
+  add_dwellito();
 
-const handle_dwellito_click = (e) => {
-  console.log(window.innerWidth);
-  e.preventDefault();
-  var isClosed = false; // indicates the state of the popup
-  const iframe = document.getElementById("dwellito-iframe");
-  const page = document.getElementById("dwellito-page");
-  const popup = document.getElementById("dwellito-popup");
-  popup.style.display = "block";
-  iframe.src = dwellitoSrc;
-  var eventMethod = window.addEventListener
-    ? "addEventListener"
-    : "attachEvent";
-  var eventer = window[eventMethod];
-  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-  eventer(
-    messageEvent,
-    function (e) {
-      var key = e.message ? "message" : "data";
-      var data = e[key];
-      if (data === "closeWindow") {
-        popup.style.display = "none";
-        page.className = "";
-        iframe.src = "";
-        isClosed = true;
-      } else {
-        const maxHeight = Math.min(window.innerHeight, data);
-        if (maxHeight < data || window.innerWidth < 600) {
-          popup.style.top = "0px !important";
-          popup.style.transform = "translate(0%, 0%) !important";
-          iframe.style.height = `${window.innerHeight}px`;
+  const handle_dwellito_click = (e) => {
+    console.log(window.innerWidth);
+    e.preventDefault();
+    var isClosed = false; // indicates the state of the popup
+    const iframe = document.getElementById("dwellito-iframe");
+    const page = document.getElementById("dwellito-page");
+    const popup = document.getElementById("dwellito-popup");
+    popup.style.display = "block";
+    iframe.src = dwellitoSrc;
+    var eventMethod = window.addEventListener
+      ? "addEventListener"
+      : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    eventer(
+      messageEvent,
+      function (e) {
+        var key = e.message ? "message" : "data";
+        var data = e[key];
+        if (data === "closeWindow") {
+          popup.style.display = "none";
+          page.className = "";
+          iframe.src = "";
+          isClosed = true;
         } else {
-          iframe.style.height = `${maxHeight}px`;
+          const maxHeight = Math.min(window.innerHeight, data);
+          if (maxHeight < data || window.innerWidth < 600) {
+            popup.style.top = "0px !important";
+            popup.style.transform = "translate(0%, 0%) !important";
+            iframe.style.height = `${window.innerHeight}px`;
+          } else {
+            iframe.style.height = `${maxHeight}px`;
+          }
         }
-      }
-    },
-    false
-  );
+      },
+      false
+    );
 
-  page.className = "darken";
-  page.onclick = function () {
-    if (isClosed) {
-      return;
-    } //if the popup is closed, do nothing.
-    popup.style.display = "none";
-    page.className = "";
-    iframe.src = "";
-    isClosed = true;
-  };
-  page.ontouchstart = function () {
-    if (isClosed) {
-      return;
-    } //if the popup is closed, do nothing.
-    popup.style.display = "none";
-    page.className = "";
-    isClosed = true;
-  };
-
-  return false;
-};
-
-const handle_dwellito_open = () => {
-  dwellitoTgt.forEach((el) => {
-    let dwellitoClickElement = document.getElementById(el);
-    if (dwellitoClickElement === null) {
-      return;
-    }
-    document.getElementById(el).onclick = function (e) {
-      handle_dwellito_click(e);
+    page.className = "darken";
+    page.onclick = function () {
+      if (isClosed) {
+        return;
+      } //if the popup is closed, do nothing.
+      popup.style.display = "none";
+      page.className = "";
+      iframe.src = "";
+      isClosed = true;
     };
-  });
-};
+    page.ontouchstart = function () {
+      if (isClosed) {
+        return;
+      } //if the popup is closed, do nothing.
+      popup.style.display = "none";
+      page.className = "";
+      isClosed = true;
+    };
 
-if (document.readyState !== "loading") {
-  handle_dwellito_open();
-} else {
-  document.addEventListener("DOMContentLoaded", function () {
+    return false;
+  };
+
+  const handle_dwellito_open = () => {
+    dwellitoTgt.forEach((el) => {
+      let dwellitoClickElement = document.getElementById(el);
+      if (dwellitoClickElement === null) {
+        return;
+      }
+      document.getElementById(el).onclick = function (e) {
+        handle_dwellito_click(e);
+      };
+    });
+  };
+
+  if (document.readyState !== "loading") {
     handle_dwellito_open();
-  });
+  } else {
+    document.addEventListener("DOMContentLoaded", function () {
+      handle_dwellito_open();
+    });
+  }
 }
+
+setup_dwellito();
