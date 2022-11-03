@@ -79,7 +79,6 @@ function setup_dwellito() {
   add_dwellito();
 
   const handle_dwellito_click = (e) => {
-    console.log(window.innerWidth);
     e.preventDefault();
     var isClosed = false; // indicates the state of the popup
     const iframe = document.getElementById("dwellito-iframe");
